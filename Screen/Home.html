@@ -22,7 +22,11 @@
         </div>
         <button
           class="menu-toggle"
-          onclick="document.body.classList.toggle('menu-open')"
+          onclick="
+    document.body.classList.toggle('menu-open');
+    const nav = document.querySelector('.nav-combined');
+    nav.style.display = document.body.classList.contains('nav-combined') ? 'block' : 'none';
+  "
         >
           ☰
         </button>
@@ -92,7 +96,7 @@
             style="height: 40px; display: block; margin: auto 0"
           />
           <p><strong>Công ty Xe Máy Điện Việt Nam</strong></p>
-          <p><strong>Địa chỉ:</strong> 359 TDP 4D, TT Đạ Tẻh</p>
+          <p><strong>Địa chỉ:</strong> 359 TDP 4D, TT Đạ Tẻ</p>
           <p><strong>Email:</strong> info@xemaydien.vn</p>
           <p><strong>Hotline:</strong> 0385188318</p>
         </div>
@@ -110,7 +114,7 @@
         <div>
           <h4>Dịch vụ</h4>
           <ul>
-            <li><a href="#">Cửa hàng ủy nhiệm</a></li>
+            <li><a href="#">Ủy nhiệm</a></li>
             <li><a href="#">Phụ tùng & phụ kiện</a></li>
             <li><a href="#">Dịch vụ sau bán hàng</a></li>
             <li><a href="#">Bảo hành</a></li>

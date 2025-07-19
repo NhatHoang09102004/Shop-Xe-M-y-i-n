@@ -38,7 +38,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #eee;
   flex-wrap: wrap;
@@ -403,6 +402,39 @@ header p {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+    @media (max-width: 768px) {
+        .top-links-a,
+        .nav-combined {
+          display: none;
+          flex-direction: column;
+          background: white;
+          width: 100%;
+          padding: 1rem;
+        }
+
+        body.menu-open .top-links-a,
+        body.menu-open .nav-combined {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+          background: #d32f2f;
+          color: white;
+          border: none;
+          font-size: 1.5rem;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          margin-left: auto;
+        }
+      }
+
+      /* Ẩn nút menu trên desktop */
+      @media (min-width: 769px) {
+        .menu-toggle {
+          display: none;
+        }
+      }
 
 .nav-combined a,
 .top-links a {

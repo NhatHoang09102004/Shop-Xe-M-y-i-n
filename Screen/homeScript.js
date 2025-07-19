@@ -100,5 +100,10 @@ document.addEventListener("DOMContentLoaded", fetchProducts);
 document.querySelectorAll(".top-links-a a, .nav-combined a").forEach((link) => {
   link.addEventListener("click", () => {
     document.body.classList.remove("menu-open");
+
+    const nav = document.querySelector(".nav-combined");
+    if (nav) {
+      nav.style.display = "none";
+    }
   });
 });
