@@ -96,3 +96,9 @@ async function fetchProducts() {
 
 // Gọi hàm khi trang đã tải xong
 document.addEventListener("DOMContentLoaded", fetchProducts);
+
+document.querySelectorAll(".top-links-a a, .nav-combined a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.body.classList.remove("menu-open");
+  });
+});
