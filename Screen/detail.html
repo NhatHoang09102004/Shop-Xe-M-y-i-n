@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết xe máy điện</title>
+    <style>
+      :root {
+        --primary: #0066cc;
+        --hover: #004a99;
+        --text-color: #333;
+        --muted: #555;
+        --background: #f9fbfe;
+        --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        --border-radius: 10px;
+        --red: #d10000;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        background: var(--background);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 1rem;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        padding: 1.5rem;
+      }
+
+      .product-image {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+
+      .product-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+
+      .product-price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--red);
+        margin-bottom: 1rem;
+      }
+
+      .product-description {
+        font-size: 1rem;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .buy-button {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 0.7rem 1.5rem;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background 0.3s;
+      }
+
+      .buy-button:hover {
+        background: var(--hover);
+      }
+
+      @media (max-width: 600px) {
+        .product-title {
+          font-size: 1.4rem;
+        }
+
+        .product-price {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="productDetail">Đang tải thông tin xe...</div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      async function loadProduct() {
+        try {
+          const res = await fetch(
+            `https://6877c8dadba809d901f0e77b.mockapi.io/item/${id}`
+          );
+          const product = await res.json();
+
+          document.getElementById("productDetail").innerHTML = `
+          <img src="${product.img}" alt="${product.name}" class="product-image" />
+          <h1 class="product-title">${product.name}</h1>
+          <p class="product-price">Giá: ${product.price} VNĐ</p>
+          <p class="product-description">${product.description}</p>
+          <a class="buy-button" href="https://m.me/tenfacebookban" target="_blank">Mua ngay qua Facebook</a>
+        `;
+        } catch (error) {
+          document.getElementById(
+            "productDetail"
+          ).innerHTML = `<p>Không tìm thấy thông tin xe.</p>`;
+          console.error("Lỗi khi tải dữ liệu sản phẩm:", error);
+        }
+      }
+
+      loadProduct();
+    </script>
+  </body>
+</html>

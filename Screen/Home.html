@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Xe Máy Điện</title>
+    <link rel="stylesheet" href="home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button id="backToTop" title="Lên đầu trang">↑</button>
+
+    <header class="main-header">
+      <div class="top-bar">
+        <div class="logo">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AJpoiGjTzQtp5VT3ttYre6hyOwrNGAlF0w&s"
+            alt="Logo"
+          />
+        </div>
+        <div class="top-links">
+          <a href="#">Giới thiệu</a>
+          <a href="#">Sản phẩm</a>
+          <a href="#">Câu hỏi thường gặp</a>
+          <a href="#">Liên hệ</a>
+          <a href="#">Tuyển dụng</a>
+          <a href="#">Thăm dò ý kiến khách hàng</a>
+        </div>
+      </div>
+      <div class="nav-combined">
+        <nav class="primary-nav">
+          <a href="#">Xe máy</a>
+          <a href="#" class="active">Xe Điện</a>
+          <a href="#">Xe máy điện</a>
+          <a href="#">Xe ô tô</a>
+        </nav>
+        <nav class="secondary-nav">
+          <a href="#">Sản phẩm</a>
+          <a href="#">Khuyến mãi</a>
+          <a href="#">Sự kiện</a>
+          <a href="#">Cửa hàng ủy nhiệm</a>
+          <a href="#">Dịch vụ sau bán hàng</a>
+          <a href="#">Phụ tùng và Phụ kiện</a>
+          <a href="#">Tin tức</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="banner">
+      <div class="banner-track" id="bannerTrack">
+        <div class="banner-slide">
+          <img
+            src="https://smbvietnam.vn/wp-content/uploads/2023/04/BackTrai576-x255-copy-1-2048x906.jpg"
+            alt="Banner 1"
+          />
+        </div>
+        <div class="banner-slide">
+          <img
+            src="https://smbvietnam.vn/wp-content/uploads/2023/04/BackPhai-537-x-255-copy-1-2048x973.jpg"
+            alt="Banner 2"
+          />
+        </div>
+        <div class="banner-slide">
+          <img
+            src="https://smbvietnam.vn/wp-content/uploads/2024/09/58c740a938ae3-2048x1024.jpg"
+            alt="Banner 3"
+          />
+        </div>
+      </div>
+      <div class="banner-buttons">
+        <button onclick="prevSlide()">❮</button>
+        <button onclick="nextSlide()">❯</button>
+      </div>
+    </section>
+
+    <section class="product-list" id="productList"></section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="info">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AJpoiGjTzQtp5VT3ttYre6hyOwrNGAlF0w&s"
+            alt="Logo"
+            style="height: 40px; display: block; margin: auto 0"
+          />
+          <p><strong>Công ty Xe Máy Điện Việt Nam</strong></p>
+          <p><strong>Địa chỉ:</strong> 359 TDP 4D, TT Đạ Tẻh</p>
+          <p><strong>Email:</strong> info@xemaydien.vn</p>
+          <p><strong>Hotline:</strong> 0385188318</p>
+        </div>
+
+        <div>
+          <h4>Xe máy</h4>
+          <ul>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Khuyến mãi</a></li>
+            <li><a href="#">Sự kiện</a></li>
+            <li><a href="#">Tin tức</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Dịch vụ</h4>
+          <ul>
+            <li><a href="#">Cửa hàng ủy nhiệm</a></li>
+            <li><a href="#">Phụ tùng & phụ kiện</a></li>
+            <li><a href="#">Dịch vụ sau bán hàng</a></li>
+            <li><a href="#">Bảo hành</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Về chúng tôi</h4>
+          <ul>
+            <li><a href="#">Về công ty</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025. Bản quyền thuộc về Shop Xe Máy Điện Việt Nam.
+      </div>
+    </footer>
+
+    <script src="homeScript.js"></script>
+  </body>
+</html>
