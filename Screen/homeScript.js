@@ -1,59 +1,59 @@
-// homeScript.js
-let currentSlideIndex = 0;
-
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("bannerTrack");
-  const slides = track.children;
+  const slides = Array.from(track.children);
   const totalSlides = slides.length;
 
+  // Clone slide đầu và cuối
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[totalSlides - 1].cloneNode(true);
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  const allSlides = track.children;
+  let index = 1;
+  const slideWidth = 100;
+
+  track.style.transform = `translateX(-${index * slideWidth}%)`;
+
   function updateSlide() {
-    track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    track.style.transition = "transform 0.6s ease-in-out";
+    track.style.transform = `translateX(-${index * slideWidth}%)`;
+  }
+
+  function jumpToSlide(i) {
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${i * slideWidth}%)`;
+    index = i;
   }
 
   window.nextSlide = function () {
-    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+    if (index >= allSlides.length - 1) return;
+    index++;
     updateSlide();
+
+    // Nếu đến clone đầu → nhảy về real đầu
+    setTimeout(() => {
+      if (index === allSlides.length - 1) {
+        jumpToSlide(1);
+      }
+    }, 700);
   };
 
   window.prevSlide = function () {
-    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    if (index <= 0) return;
+    index--;
     updateSlide();
+
+    // Nếu đến clone cuối → nhảy về real cuối
+    setTimeout(() => {
+      if (index === 0) {
+        jumpToSlide(allSlides.length - 2);
+      }
+    }, 700);
   };
 
-  // Auto slide
-  setInterval(window.nextSlide, 5000);
-});
-
-window.addEventListener("DOMContentLoaded", function () {
-  const backToTopBtn = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-  });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-  let currentSlide = 0;
-  const track = document.getElementById("bannerTrack");
-  const totalSlides = document.querySelectorAll(".banner-slide").length;
-
-  function updateSlide() {
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlide();
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSlide();
-  }
-
-  // Tự động chạy sau mỗi 5 giây
-  setInterval(nextSlide, 6000);
+  setInterval(window.nextSlide, 7000);
 });
 
 async function fetchProducts() {
