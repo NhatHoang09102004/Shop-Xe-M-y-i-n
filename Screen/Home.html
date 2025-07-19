@@ -12,7 +12,6 @@
   </head>
   <body>
     <button id="backToTop" title="Lên đầu trang">↑</button>
-
     <header class="main-header">
       <div class="top-bar">
         <div class="logo">
@@ -21,7 +20,13 @@
             alt="Logo"
           />
         </div>
-        <div class="top-links">
+        <button
+          class="menu-toggle"
+          onclick="document.body.classList.toggle('menu-open')"
+        >
+          ☰
+        </button>
+        <div class="top-links-a">
           <a href="#">Giới thiệu</a>
           <a href="#">Sản phẩm</a>
           <a href="#">Câu hỏi thường gặp</a>
