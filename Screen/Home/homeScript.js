@@ -82,7 +82,7 @@ async function fetchProducts() {
     <p class="price">${product.price}</p>
     <p class="spec">${product.description}</p>
     <div class="btn-group">
-<a href="detail.html?id=${product.id}">Xem chi tiết</a>
+<a href="../Detail/detail.html?id=${product.id}">Xem chi tiết</a>
       <a href="#">Đặt mua</a>
     </div>
   </div>
