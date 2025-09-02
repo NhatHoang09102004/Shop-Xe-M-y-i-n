@@ -60,7 +60,7 @@ async function loadProduct() {
       </div>
 
       <div class="mt-5">
-        <h4 class="fw-bold mb-3">Xe tương tự</h4>
+        <h4  class="fw-bold mb-3">Xe tương tự</h4>
         <div class="row" id="relatedProducts"></div>
       </div>
     `;
