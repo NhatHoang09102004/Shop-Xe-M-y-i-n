@@ -6,13 +6,13 @@
     <title>Chi tiết xe máy điện</title>
     <style>
       :root {
-        --primary: #0066cc;
+        --primary: #00bbe4;
         --hover: #004a99;
-        --text-color: #333;
-        --muted: #555;
+        --text-color: #222;
+        --muted: #666;
         --background: #f9fbfe;
-        --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-        --border-radius: 10px;
+        --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        --border-radius: 12px;
         --red: #d10000;
       }
 
@@ -21,7 +21,6 @@
         margin: 0;
         background: var(--background);
         color: var(--text-color);
-        line-height: 1.6;
         padding: 1rem;
       }
 
@@ -31,44 +30,71 @@
         background: white;
         border-radius: var(--border-radius);
         box-shadow: var(--card-shadow);
-        padding: 1.5rem;
+        padding: 2rem;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .breadcrumb {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        color: var(--muted);
+      }
+
+      .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
       }
 
       .product-image {
         width: 100%;
-        height: auto;
         border-radius: var(--border-radius);
-        object-fit: cover;
         margin-bottom: 1rem;
+        object-fit: cover;
+        max-height: 400px;
       }
 
       .product-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 0.5rem;
         color: var(--primary);
       }
 
       .product-price {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: bold;
         color: var(--red);
         margin-bottom: 1rem;
       }
 
       .product-description {
-        font-size: 1rem;
+        font-size: 1.05rem;
         color: var(--muted);
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
       }
 
       .buy-button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         background: var(--primary);
         color: white;
-        padding: 0.7rem 1.5rem;
+        padding: 0.8rem 1.8rem;
         text-decoration: none;
-        border-radius: 6px;
-        font-weight: 500;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
         transition: background 0.3s;
       }
 
@@ -76,13 +102,23 @@
         background: var(--hover);
       }
 
+      .buy-button svg {
+        width: 20px;
+        height: 20px;
+      }
+
       @media (max-width: 600px) {
         .product-title {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
         }
 
         .product-price {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
+        }
+
+        .buy-button {
+          width: 100%;
+          justify-content: center;
         }
       }
     </style>
@@ -101,13 +137,23 @@
           );
           const product = await res.json();
 
+          // ✅ Sửa lỗi hiển thị giá
+          const priceNumber = Number(product.price);
+          const formattedPrice = isNaN(priceNumber)
+            ? product.price
+            : priceNumber.toLocaleString("vi-VN") + " VNĐ";
+
           document.getElementById("productDetail").innerHTML = `
-          <img src="${product.img}" alt="${product.name}" class="product-image" />
-          <h1 class="product-title">${product.name}</h1>
-          <p class="product-price">Giá: ${product.price} VNĐ</p>
-          <p class="product-description">${product.description}</p>
-          <a class="buy-button" href="https://m.me/tenfacebookban" target="_blank">Mua ngay qua Facebook</a>
-        `;
+        <div class="breadcrumb"><a href="index.html">← Quay về danh sách</a></div>
+        <img src="${product.img}" alt="${product.name}" class="product-image" />
+        <h1 class="product-title">${product.name}</h1>
+        <p class="product-price">Giá: ${formattedPrice}</p>
+        <p class="product-description">${product.description}</p>
+        <a class="buy-button" href="https://m.me/tenfacebookban" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M12.004 2C6.476 2 2 6.026 2 11.35c0 2.931 1.548 5.552 4.006 7.3v3.35l3.677-2.021a11.53 11.53 0 0 0 2.32.243c5.529 0 10.005-4.026 10.005-9.35S17.533 2 12.004 2zm.273 11.65-2.94-3.18 6.479 3.18h-3.539z"/></svg>
+          Mua ngay qua Facebook
+        </a>
+      `;
         } catch (error) {
           document.getElementById(
             "productDetail"

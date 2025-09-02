@@ -1,9 +1,9 @@
 /* Giao diện trang web bán xe máy điện */
 
 :root {
-    --primary: #0066cc;
+    --primary: #21b9f3;
     --hover: #004a99;
-    --text-color: #333;
+    --text-color: #606060;
     --muted: #555;
     --background: #f9fbfe;
     --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -359,7 +359,7 @@ header p {
 }
 
 .primary-nav {
-  background: var(--red);
+  background: var(--primary);
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
