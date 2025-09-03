@@ -31,7 +31,6 @@
     />
   </head>
   <body>
-    <button id="backToTop" title="Lên đầu trang">↑</button>
     <header class="main-header">
       <div class="top-bar">
         <div class="logo">
@@ -45,7 +44,7 @@
           onclick="
     document.body.classList.toggle('menu-open');
     const nav = document.querySelector('.nav-combined');
-    nav.style.display = document.body.classList.contains('nav-combined') ? 'block' : 'none';
+nav.style.display = document.body.classList.contains('menu-open') ? 'block' : 'none';
   "
         >
           ☰
@@ -154,6 +153,14 @@
         © 2025. Bản quyền thuộc về Shop Xe Máy Điện Việt Nam.
       </div>
     </footer>
+    <div class="chat-buttons">
+      <a href="https://zalo.me/0385188318" target="_blank" class="chat-zalo"
+        >Zalo Chat</a
+      >
+      <a href="https://m.me/yourpageid" target="_blank" class="chat-messenger"
+        >Messenger</a
+      >
+    </div>
 
     <script src="homeScript.js"></script>
   </body>

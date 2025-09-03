@@ -97,7 +97,7 @@ async function loadRelated(currentId) {
       <div class="card h-100 shadow-sm related-item" onclick="window.location='detail.html?id=${
         p.id
       }'" style="cursor:pointer;">
-        <img src="${p.img}" class="card-img-top" alt="${p.name}"/>
+<img src="${p.img}" class="card-img-top" alt="${p.name}"/>
         <div class="card-body text-center">
           <h6 class="card-title fw-bold">${p.name}</h6>
           <p class="text-danger fw-bold mb-0">${Number(p.price).toLocaleString(
