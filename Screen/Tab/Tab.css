@@ -1,0 +1,108 @@
+/* Reset & font */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #eef2f7);
+  color: #333;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #21b9f3, #0dcaf0); /* xanh dương -> xanh ngọc */
+}
+.navbar .navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #fff !important;
+}
+.navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffc107 !important; /* vàng tươi */
+  transform: scale(1.1);
+}
+
+/* Heading */
+h2 {
+  font-weight: 700;
+  background: linear-gradient(90deg, #21b9f3, #20c997); /* xanh dương -> xanh ngọc */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 1s ease;
+}
+
+/* Card sản phẩm */
+.product-list {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  border: none;
+}
+.product-list:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+}
+.product-list img {
+  transition: transform 0.5s ease;
+}
+.product-list:hover img {
+  transform: scale(1.1);
+}
+
+/* Button VIP */
+.btn {
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+}
+.btn-warning {
+  background: linear-gradient(90deg, #ffc107, #fd7e14);
+  border: none;
+  color: #fff;
+}
+.btn-warning:hover {
+  background: linear-gradient(90deg, #fd7e14, #ff5733);
+  transform: scale(1.07);
+  box-shadow: 0 8px 25px rgba(253, 126, 20, 0.4);
+}
+
+/* Form liên hệ */
+form {
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #eee;
+}
+form input, form textarea {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+form input:focus, form textarea:focus {
+  border-color: #21b9f3;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #21b9f3, #0dcaf0);
+  color: #fff;
+  font-size: 0.9rem;
+}
+footer:hover {
+  color: #ffe082;
+  transition: color 0.3s ease;
+}
+
+/* Hiệu ứng animation */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

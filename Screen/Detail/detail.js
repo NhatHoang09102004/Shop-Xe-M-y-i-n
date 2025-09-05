@@ -20,7 +20,7 @@ async function loadProduct() {
     detail.innerHTML = `
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-3">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="../../Screen/Home/Home.html">Trang chủ</a></li>
           <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
         </ol>
       </nav>
@@ -43,7 +43,7 @@ async function loadProduct() {
             <tbody>
               <tr><th>Công suất động cơ</th><td>${product.capacity}W</td></tr>
               <tr><th>Dung lượng pin</th><td>${product.battery} Ah</td></tr>
-              <tr><th>Quãng đường</th><td>${product.distance} km</td></tr>
+              <tr><th>Quãng đường</th><td>${product.distance}</td></tr>
               <tr><th>Tốc độ tối đa</th><td>${product.speed} km/h</td></tr>
               <tr><th>Thời gian sạc</th><td>${product.Charging} giờ</td></tr>
               <tr><th>Trọng lượng</th><td>${product.Weight} kg</td></tr>
@@ -52,9 +52,9 @@ async function loadProduct() {
           </table>
 
           <div class="d-flex flex-wrap gap-2 mt-3">
-            <a href="https://m.me/tenfacebookban" target="_blank" class="btn btn-primary">Mua qua Facebook</a>
-            <a href="https://zalo.me/0123456789" target="_blank" class="btn btn-success">Liên hệ Zalo</a>
-            <a href="tel:0123456789" class="btn btn-warning">Gọi điện</a>
+            <a href="https://www.facebook.com/nguyen.inh.hoa.748090" target="_blank" class="btn btn-primary">Mua qua Facebook</a>
+            <a href="https://zalo.me/0906657297" target="_blank" class="btn btn-success">Liên hệ Zalo</a>
+            <a href="Gọi ngay: 0906657297" class="btn btn-warning">Gọi điện</a>
           </div>
         </div>
       </div>
@@ -94,15 +94,12 @@ async function loadRelated(currentId) {
     .map(
       (p) => `
     <div class="col-md-4 mb-3">
-      <div class="card h-100 shadow-sm related-item" onclick="window.location='detail.html?id=${
-        p.id
-      }'" style="cursor:pointer;">
+      <div class="card h-100 shadow-sm related-item" onclick="window.location='detail.html?id=${p.id}'" style="cursor:pointer;">
 <img src="${p.img}" class="card-img-top" alt="${p.name}"/>
         <div class="card-body text-center">
           <h6 class="card-title fw-bold">${p.name}</h6>
-          <p class="text-danger fw-bold mb-0">${Number(p.price).toLocaleString(
-            "vi-VN"
-          )} VNĐ</p>
+          <p class="text-danger fw-bold mb-0">${p.price}</p>
+
         </div>
       </div>
     </div>

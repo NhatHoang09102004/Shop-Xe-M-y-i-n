@@ -99,7 +99,8 @@ async function fetchProducts() {
           <p class="spec">${product.description}</p>
           <div class="btn-group">
             <a href="../Detail/detail.html?id=${product.id}">Xem chi tiết</a>
-            <a href="#">Đặt mua</a>
+            <a href="https://www.facebook.com/messages/e2ee/t/6853360164701017" target="_blank">Đặt mua</a>
+
           </div>
         </div>
       `;

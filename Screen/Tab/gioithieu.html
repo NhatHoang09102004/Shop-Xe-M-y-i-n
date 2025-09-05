@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Giới thiệu - Xe điện SMB</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f8f9fa;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #15c3f1 !important;
+      }
+      .navbar .nav-link,
+      .navbar .navbar-brand {
+        color: #fff !important;
+        font-weight: 600;
+      }
+      .navbar .nav-link.active {
+        text-decoration: underline;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(rgba(21, 195, 241, 0.8), rgba(0, 0, 0, 0.6)),
+          url("https://picsum.photos/1600/500?grayscale") center/cover no-repeat;
+        color: #fff;
+        padding: 100px 20px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      /* Section giới thiệu */
+      h2 {
+        color: #15c3f1;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      .lead {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Card */
+      .feature-card {
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 15px;
+      }
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Footer */
+      footer {
+        background: #15c3f1;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../Home/Home.html">Xe điện SMB</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="gioithieu.html">Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sanpham.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="baohanh.html">Bảo hành</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lienhe.html">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Xe điện SMB</h1>
+      <p>Tiên phong mang đến giải pháp di chuyển xanh – tiết kiệm – bền vững</p>
+    </section>
+
+    <!-- Giới thiệu -->
+    <main class="container my-5">
+      <h2 class="text-center">Về chúng tôi</h2>
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img
+            src="https://i.pinimg.com/736x/85/41/80/85418057da2fd329c5c4456ab4dd073d.jpg"
+            class="img-fluid rounded shadow"
+            alt="Xe điện SMB"
+          />
+        </div>
+        <div class="col-lg-6">
+          <p class="lead" data-aos="fade-right">
+            Xe điện <strong>SMB</strong> là thương hiệu hàng đầu tại Việt Nam
+            trong lĩnh vực xe đạp điện và xe máy điện. Chúng tôi tự hào đã đồng
+            hành cùng hàng chục nghìn khách hàng trên hành trình xây dựng một
+            phương thức di chuyển <strong>xanh – thông minh – bền vững</strong>.
+          </p>
+          <p class="lead" data-aos="fade-left">
+            Với nhiều năm kinh nghiệm trong nghiên cứu và phát triển, SMB không
+            ngừng đổi mới công nghệ, ứng dụng pin Lithium tiên tiến, động cơ
+            mạnh mẽ và thiết kế hiện đại. Mỗi sản phẩm được tạo ra đều trải qua
+            quy trình kiểm định nghiêm ngặt, nhằm mang lại sự
+            <strong>an toàn tuyệt đối</strong> và
+            <strong>tuổi thọ vượt trội</strong>.
+          </p>
+          <p class="lead" data-aos="fade-up">
+            Sứ mệnh của SMB là
+            <strong>nâng tầm trải nghiệm di chuyển</strong> cho người Việt, giúp
+            tiết kiệm chi phí, bảo vệ môi trường và mang lại sự tiện lợi tối đa
+            trong cuộc sống hàng ngày. Chúng tôi tin rằng, mỗi chiếc xe điện SMB
+            không chỉ là phương tiện di chuyển, mà còn là
+            <strong>người bạn đồng hành</strong> trên con đường hướng tới tương
+            lai xanh.
+          </p>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <h2 class="text-center mb-4">Tầm nhìn & Giá trị</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card feature-card text-center p-4 h-100">
+            <h5 class="fw-bold text-primary">🌍 Tầm nhìn</h5>
+            <p>
+              Trở thành thương hiệu xe điện dẫn đầu Việt Nam, vươn tầm quốc tế,
+              góp phần vào xu hướng giao thông xanh toàn cầu.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card text-center p-4 h-100">
+            <h5 class="fw-bold text-primary">🎯 Sứ mệnh</h5>
+            <p>
+              Cung cấp phương tiện di chuyển an toàn, bền bỉ, tiết kiệm và thân
+              thiện môi trường cho mọi gia đình Việt.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card text-center p-4 h-100">
+            <h5 class="fw-bold text-primary">💡 Giá trị cốt lõi</h5>
+            <p>
+              Đặt khách hàng làm trung tâm – Không ngừng đổi mới – Phát triển
+              bền vững – Lan tỏa năng lượng tích cực.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 mt-5">
+      © 2025 Xe điện SMB | Giới thiệu & Sứ mệnh thương hiệu
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1200, // thời gian animation
+    once: true, // chỉ chạy 1 lần khi scroll
+  });
+</script>

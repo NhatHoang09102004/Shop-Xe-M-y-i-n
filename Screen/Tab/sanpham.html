@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sản phẩm - Xe điện SMB</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Tab.css" />
+    <style>
+      body {
+        background: #f5f7fa;
+      }
+
+      /* Scroll animation cho fade-in */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Card hover chung */
+      .card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+      }
+
+      /* Search + sort */
+      .search-sort input,
+      .search-sort select {
+        max-width: 200px;
+      }
+
+      /* --- Phụ kiện marquee --- */
+      .accessory-marquee {
+        overflow: hidden;
+        position: relative;
+        height: 250px; /* chiều cao container */
+        margin-top: 2rem;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        display: flex;
+        align-items: center; /* căn giữa theo chiều dọc */
+      }
+
+      .accessory-track {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: scroll 25s linear infinite;
+      }
+
+      /* Card phụ kiện */
+      .accessory-track .card {
+        min-width: 180px;
+        margin: 0 12px;
+        cursor: pointer;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 220px; /* chiều cao card phù hợp */
+      }
+      .accessory-track .card img {
+        height: 120px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .accessory-track .card-body {
+        padding: 10px;
+        text-align: center;
+      }
+      .accessory-track .card-title {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+      .accessory-track .text-danger {
+        font-size: 0.85rem;
+      }
+
+      /* Animation marquee */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .accessory-track .card {
+          min-width: 140px;
+          margin: 0 8px;
+          height: 180px; /* giảm chiều cao cho mobile */
+        }
+        .accessory-track .card img {
+          height: 100px;
+        }
+        .accessory-marquee {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../Home/Home.html">Xe điện SMB</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="sanpham.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="baohanh.html">Bảo hành</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lienhe.html">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container my-5">
+      <!-- Phụ tùng -->
+      <h2 class="text-center mb-4 fade-in">Danh sách phụ tùng</h2>
+      <div class="d-flex justify-content-center mb-4 gap-2 fade-in search-sort">
+        <input
+          type="text"
+          id="searchInput"
+          class="form-control"
+          placeholder="🔍 Tìm phụ tùng..."
+        />
+        <select id="sortSelect" class="form-select">
+          <option value="default">Sắp xếp</option>
+          <option value="asc">⬆ Giá tăng dần</option>
+          <option value="desc">⬇ Giá giảm dần</option>
+        </select>
+      </div>
+
+      <div class="row g-4" id="productList">
+        <!-- Các sản phẩm -->
+        <div class="col-md-4 fade-in product-item" data-price="1800000">
+          <div class="card shadow h-100">
+            <img
+              src="https://picsum.photos/300/200?car1"
+              class="card-img-top"
+              alt="Lốp xe"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Lốp xe điện</h5>
+              <p class="text-danger fw-bold">1.800.000 VNĐ</p>
+              <a
+                href="https://www.facebook.com/messages/e2ee/t/6853360164701017"
+                target="_blank"
+                class="btn btn-warning w-100"
+                >Đặt mua</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 fade-in product-item" data-price="1200000">
+          <div class="card shadow h-100">
+            <img
+              src="https://picsum.photos/300/200?car2"
+              class="card-img-top"
+              alt="Ruột lốp"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Ruột lốp</h5>
+              <p class="text-danger fw-bold">1.200.000 VNĐ</p>
+              <a
+                href="https://www.facebook.com/messages/e2ee/t/6853360164701017"
+                target="_blank"
+                class="btn btn-warning w-100"
+                >Đặt mua</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 fade-in product-item" data-price="600000">
+          <div class="card shadow h-100">
+            <img
+              src="https://picsum.photos/300/200?car3"
+              class="card-img-top"
+              alt="Gương"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Gương chiếu hậu</h5>
+              <p class="text-danger fw-bold">600.000 VNĐ</p>
+              <a
+                href="https://www.facebook.com/messages/e2ee/t/6853360164701017"
+                target="_blank"
+                class="btn btn-warning w-100"
+                >Đặt mua</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Thêm các sản phẩm khác tương tự, đổi tất cả nút “Đặt mua” thành Messenger -->
+      </div>
+
+      <!-- Phụ kiện khác (marquee) -->
+      <h3 class="text-center mt-5 fade-in">Các phụ kiện khác</h3>
+      <div class="accessory-marquee fade-in">
+        <div id="accessoryTrack" class="accessory-track"></div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      © 2025 Xe điện SMB
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Scroll animation
+      const fadeEls = document.querySelectorAll(".fade-in");
+      function showOnScroll() {
+        const trigger = window.innerHeight * 0.85;
+        fadeEls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < trigger) {
+            el.classList.add("show");
+          }
+        });
+      }
+      window.addEventListener("scroll", showOnScroll);
+      window.addEventListener("load", showOnScroll);
+
+      // Search + sort products
+      const products = document.querySelectorAll(".product-item");
+      const searchInput = document.getElementById("searchInput");
+      const sortSelect = document.getElementById("sortSelect");
+
+      function filterProducts() {
+        const text = searchInput.value.toLowerCase();
+        let items = Array.from(products);
+
+        // Lọc sản phẩm
+        items.forEach((item) => {
+          const name = item
+            .querySelector(".card-title")
+            .textContent.toLowerCase();
+          // Hiển thị hoặc ẩn col-md-4
+          item.style.display = name.includes(text) ? "block" : "none";
+        });
+
+        // Sắp xếp
+        if (sortSelect.value !== "default") {
+          const sorted = items
+            .filter((item) => item.style.display !== "none") // chỉ sắp xếp các item đang hiển thị
+            .sort((a, b) => {
+              const priceA = parseInt(a.dataset.price),
+                priceB = parseInt(b.dataset.price);
+              return sortSelect.value === "asc"
+                ? priceA - priceB
+                : priceB - priceA;
+            });
+
+          const container = document.getElementById("productList");
+          sorted.forEach((item) => container.appendChild(item));
+        }
+      }
+
+      // Event
+      searchInput.addEventListener("input", filterProducts);
+      sortSelect.addEventListener("change", filterProducts);
+
+      // Load phụ kiện marquee
+      async function loadAccessories() {
+        const messengerLink =
+          "https://www.facebook.com/messages/e2ee/t/6853360164701017";
+
+        const accessories = [
+          {
+            img: "https://picsum.photos/200/150?1",
+            name: "Mũ bảo hiểm SMB",
+            price: 250000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?2",
+            name: "Găng tay bảo hộ",
+            price: 120000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?3",
+            name: "Áo mưa SMB",
+            price: 80000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?4",
+            name: "Kính bảo hộ",
+            price: 150000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?5",
+            name: "Bình nước",
+            price: 90000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?6",
+            name: "Túi đeo lưng",
+            price: 180000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?7",
+            name: "Gương phụ",
+            price: 120000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?8",
+            name: "Ốp bảo vệ tay lái",
+            price: 95000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?9",
+            name: "Thảm chống trượt",
+            price: 70000,
+            link: messengerLink,
+          },
+          {
+            img: "https://picsum.photos/200/150?10",
+            name: "Đèn xi nhan",
+            price: 110000,
+            link: messengerLink,
+          },
+        ];
+
+        const track = document.getElementById("accessoryTrack");
+        track.innerHTML = accessories
+          .map(
+            (a) => `
+          <div class="card shadow h-100">
+            <img src="${a.img}" class="card-img-top" alt="${a.name}" />
+            <div class="card-body text-center">
+              <h5 class="card-title">${a.name}</h5>
+              <p class="text-danger fw-bold">${Number(a.price).toLocaleString(
+                "vi-VN"
+              )} VNĐ</p>
+              <a href="${
+                a.link
+              }" target="_blank" class="btn btn-warning w-100">Đặt mua</a>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      window.addEventListener("load", loadAccessories);
+    </script>
+  </body>
+</html>
