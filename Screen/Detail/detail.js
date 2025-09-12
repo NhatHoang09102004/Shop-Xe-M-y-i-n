@@ -1,3 +1,5 @@
+import PhotoSwipeLightbox from "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js";
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
@@ -24,9 +26,13 @@ async function loadProduct() {
       detail.classList.remove("d-none");
       detail.classList.add("fade-in");
 
-      // Ảnh chính + phụ cho Lightbox
+      // Ảnh chính + ảnh phụ (PhotoSwipe gallery)
       let galleryImages = `
-        <a id="mainImageLink" href="${product.img}" data-lightbox="product-gallery">
+        <a id="mainImageLink" 
+           href="${product.img}" 
+           data-pswp-width="1200" 
+           data-pswp-height="800" 
+           data-pswp-gallery="product-gallery">
           <img id="mainImage" src="${product.img}" 
                class="img-fluid rounded shadow-sm mb-3 product-image" 
                alt="${product.name}">
@@ -34,28 +40,38 @@ async function loadProduct() {
       `;
 
       if (product.images) {
-        galleryImages += `<a href="${product.images}" data-lightbox="product-gallery" class="d-none"></a>`;
+        galleryImages += `
+          <a href="${product.images}" 
+             data-pswp-width="1200" 
+             data-pswp-height="800" 
+             data-pswp-gallery="product-gallery" 
+             class="d-none"></a>`;
       }
       if (product.hoverImg) {
-        galleryImages += `<a href="${product.hoverImg}" data-lightbox="product-gallery" class="d-none"></a>`;
+        galleryImages += `
+          <a href="${product.hoverImg}" 
+             data-pswp-width="1200" 
+             data-pswp-height="800" 
+             data-pswp-gallery="product-gallery" 
+             class="d-none"></a>`;
       }
 
       // Thumbnail hiển thị
       let thumbnails = `
-  <img src="${product.img}" class="img-thumbnail thumb-img active" 
-       onclick="changeImage(this, '${product.img}')">
-`;
+        <img src="${product.img}" class="img-thumbnail thumb-img active" 
+             onclick="changeImage(this, '${product.img}')">
+      `;
       if (product.images) {
         thumbnails += `
-    <img src="${product.images}" class="img-thumbnail thumb-img" 
-         onclick="changeImage(this, '${product.images}')">
-  `;
+          <img src="${product.images}" class="img-thumbnail thumb-img" 
+               onclick="changeImage(this, '${product.images}')">
+        `;
       }
       if (product.hoverImg) {
         thumbnails += `
-    <img src="${product.hoverImg}" class="img-thumbnail thumb-img" 
-         onclick="changeImage(this, '${product.hoverImg}')">
-  `;
+          <img src="${product.hoverImg}" class="img-thumbnail thumb-img" 
+               onclick="changeImage(this, '${product.hoverImg}')">
+        `;
       }
 
       detail.innerHTML = `
@@ -110,6 +126,17 @@ async function loadProduct() {
         </div>
       `;
 
+      // Khởi tạo PhotoSwipe gallery
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#productDetail",
+        children: 'a[data-pswp-gallery="product-gallery"]',
+        pswpModule: () =>
+          import(
+            "https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js"
+          ),
+      });
+      lightbox.init();
+
       loadRelated(product.id);
     }, 500);
   } catch (error) {
@@ -121,7 +148,7 @@ async function loadProduct() {
 }
 
 // Hàm đổi ảnh chính
-function changeImage(el, src) {
+window.changeImage = function (el, src) {
   document.getElementById("mainImage").src = src;
   document.getElementById("mainImageLink").href = src;
 
@@ -129,7 +156,7 @@ function changeImage(el, src) {
     .querySelectorAll(".thumb-img")
     .forEach((img) => img.classList.remove("active"));
   el.classList.add("active");
-}
+};
 
 // Load xe liên quan
 async function loadRelated(currentId) {
@@ -141,15 +168,12 @@ async function loadRelated(currentId) {
     .map(
       (p) => `
       <div class="col-md-4 mb-3">
-        <div class="card h-100 shadow-sm related-item" onclick="window.location='detail.html?id=${
-          p.id
-        }'" style="cursor:pointer;">
+        <div class="card h-100 shadow-sm related-item" 
+             onclick="window.location='detail.html?id=${p.id}'" style="cursor:pointer;">
           <img src="${p.img}" class="card-img-top" alt="${p.name}"/>
           <div class="card-body text-center">
             <h6 class="card-title fw-bold">${p.name}</h6>
-            <p class="text-danger fw-bold mb-0">${Number(
-              p.price
-            ).toLocaleString("vi-VN")} VNĐ</p>
+            <p class="text-danger fw-bold mb-0">${p.price}</p>
           </div>
         </div>
       </div>
